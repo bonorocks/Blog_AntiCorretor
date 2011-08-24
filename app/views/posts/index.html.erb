@@ -1,0 +1,23 @@
+<h1>Blog AntiCorretor</h1>
+
+<div id="imoveis_recentes">
+  <h3>Imoveis recentes coletados</h3>
+  <ul>
+  <% for entry in Imovel.all(:limit => 10, :order => "created_at desc") %>
+    <li><%= link_to h(entry.local), entry.valor %></li>
+  <% end %>
+  </ul>
+</div>
+
+<% @posts.each do |post| %>
+<h2><%= link_to post.titulo, post %></h2>
+<p><%= post.conteudo %></p>
+<%= link_to 'Ver mais', post %>
+<%= link_to '[Editar]', edit_post_path(post) %>
+<%= link_to '[Excluir]', post, :confirm => 'Tem certeza?', :method => :delete %>
+<hr />
+<% end %>
+ 
+<br />
+ 
+<%= link_to 'Novo artigo', new_post_path %>

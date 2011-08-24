@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  local: MyText
+  area: MyString
+  valor: MyString
+  valm2: MyString
+  data: 2011-08-17
+  codigo: 1
+
+two:
+  local: MyText
+  area: MyString
+  valor: MyString
+  valm2: MyString
+  data: 2011-08-17
+  codigo: 1

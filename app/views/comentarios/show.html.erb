@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Autor:</b>
+  <%= @comentario.autor %>
+</p>
+
+<p>
+  <b>Conteudo:</b>
+  <%= @comentario.conteudo %>
+</p>
+
+<p>
+  <b>Artigo:</b>
+  <%= @comentario.post %>
+</p>
+
+
+<%= link_to 'Editar', edit_comentario_path(@comentario) %> |
+<%= link_to 'Voltar', comentarios_path %>

@@ -1,0 +1,1870 @@
+  [1m[36mSQL (31.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreatePosts (20110814234758)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar(255), "conteudo" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (15.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110814234758')
+Migrating to CreateComentarios (20110814235017)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "comentarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "autor" varchar(255), "conteudo" text, "post_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110814235017')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("comentarios")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("posts")[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 21:02:21 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 656ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Sun Aug 14 21:02:58 -0300 2011
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (93.8ms)
+Rendered posts/new.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 219ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Sun Aug 14 21:03:18 -0300 2011
+  Processing by PostsController#create as HTML
+  Parameters: {"commit"=>"Create Post", "post"=>{"titulo"=>"primeiro post", "conteudo"=>"este e o conteudo do primeiro post"}, "authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "utf8"=>"✓"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "posts" ("conteudo", "created_at", "titulo", "updated_at") VALUES ('este e o conteudo do primeiro post', '2011-08-15 00:03:19.015625', 'primeiro post', '2011-08-15 00:03:19.015625')[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 250ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:03:19 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Sun Aug 14 21:03:24 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (15.6ms)
+Rendered posts/edit.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:03:27 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 21:03:30 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 203ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:03:59 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 21:04:03 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 219ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:04:14 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 21:27:47 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 484ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:28:01 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (281.2ms)
+Completed 200 OK in 344ms (Views: 312.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1/comentarios" for 127.0.0.1 at Sun Aug 14 21:28:29 -0300 2011
+  Processing by ComentariosController#create as HTML
+  Parameters: {"commit"=>"Create Comentario", "comentario"=>{"autor"=>"Cassio", "conteudo"=>"comentando o primeiro"}, "authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "utf8"=>"✓", "post_id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "comentarios" ("updated_at", "post_id", "autor", "created_at", "conteudo") VALUES ('2011-08-15 00:28:29.828125', 1, 'Cassio', '2011-08-15 00:28:29.828125', 'comentando o primeiro')
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 109ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:28:29 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 203ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Sun Aug 14 21:28:40 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (15.6ms)
+Rendered posts/edit.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 78ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 21:28:49 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (15.6ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 250ms (Views: 156.2ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:29:47 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 172ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 21:30:30 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 125ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:01 -0300 2011
+  Processing by Rails::InfoController#properties as 
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Rendered inline template (0.0ms)
+Completed 200 OK in 188ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:09 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:11 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:12 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:13 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:13 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 16ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:14 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at Sun Aug 14 21:33:15 -0300 2011
+  Processing by Rails::InfoController#properties as 
+Rendered inline template (0.0ms)
+Completed 200 OK in 16ms (Views: 0.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Aug 14 21:34:11 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 156ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Sun Aug 14 22:49:36 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 516ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Sun Aug 14 22:52:33 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 500ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Sun Aug 14 23:33:24 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 469ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Sun Aug 14 23:36:14 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 625ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 23:36:18 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (15.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (250.0ms)
+Completed 200 OK in 359ms (Views: 312.5ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/posts/1/comentarios" for 127.0.0.1 at Sun Aug 14 23:36:34 -0300 2011
+  Processing by ComentariosController#create as HTML
+  Parameters: {"commit"=>"Create Comentario", "comentario"=>{"autor"=>"kk", "conteudo"=>""}, "authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "utf8"=>"✓", "post_id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "comentarios" ("post_id", "conteudo", "created_at", "autor", "updated_at") VALUES (1, '', '2011-08-15 02:36:35.453125', 'kk', '2011-08-15 02:36:35.453125')
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 250ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 23:36:35 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 188ms (Views: 156.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1/comentarios" for 127.0.0.1 at Sun Aug 14 23:38:15 -0300 2011
+  Processing by ComentariosController#create as HTML
+  Parameters: {"commit"=>"Create Comentario", "comentario"=>{"autor"=>"", "conteudo"=>""}, "authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "utf8"=>"✓", "post_id"=>"1"}
+  [1m[36mPost Load (15.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "comentarios" ("post_id", "updated_at", "autor", "created_at", "conteudo") VALUES (1, '2011-08-15 02:38:15.984375', '', '2011-08-15 02:38:15.984375', '')
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 141ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 23:38:16 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (15.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 234ms (Views: 156.2ms | ActiveRecord: 31.2ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 23:50:39 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+Rendered posts/show.html.erb within layouts/application (406.2ms)
+Completed 200 OK in 1062ms (Views: 468.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1/comentarios" for 127.0.0.1 at Sun Aug 14 23:51:16 -0300 2011
+  Processing by ComentariosController#create as HTML
+  Parameters: {"commit"=>"Create Comentario", "comentario"=>{"autor"=>"", "conteudo"=>""}, "authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "utf8"=>"✓", "post_id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "comentarios" ("conteudo", "post_id", "updated_at", "autor", "created_at") VALUES ('', 1, '2011-08-15 02:51:16.593750', '', '2011-08-15 02:51:16.593750')[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 250ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 23:51:16 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+Rendered posts/show.html.erb within layouts/application (234.4ms)
+Completed 200 OK in 312ms (Views: 281.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 23:53:02 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 125ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Sun Aug 14 23:53:05 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+Rendered posts/show.html.erb within layouts/application (343.8ms)
+Completed 200 OK in 453ms (Views: 406.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Aug 14 23:53:14 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 156ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Sun Aug 14 23:53:18 -0300 2011
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (31.2ms)
+Rendered posts/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 312ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Sun Aug 14 23:53:21 -0300 2011
+  Processing by PostsController#create as HTML
+  Parameters: {"commit"=>"Create Post", "post"=>{"titulo"=>"", "conteudo"=>""}, "authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "utf8"=>"✓"}
+Rendered posts/_form.html.erb (31.2ms)
+Rendered posts/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 172ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Mon Aug 15 00:08:47 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Mon Aug 15 00:08:54 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (312.5ms)
+Completed 200 OK in 469ms (Views: 359.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1/comentarios/4" for 127.0.0.1 at Mon Aug 15 00:09:05 -0300 2011
+  Processing by ComentariosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "post_id"=>"1", "id"=>"4"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (15.6ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE "comentarios"."id" = 4 AND ("comentarios".post_id = 1) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "comentarios" WHERE "comentarios"."id" = 4[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 78ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Mon Aug 15 00:09:06 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (250.0ms)
+Completed 200 OK in 328ms (Views: 281.2ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/posts/1/comentarios/3" for 127.0.0.1 at Mon Aug 15 00:09:10 -0300 2011
+  Processing by ComentariosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "post_id"=>"1", "id"=>"3"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE "comentarios"."id" = 3 AND ("comentarios".post_id = 1) LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "comentarios" WHERE "comentarios"."id" = 3[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 281ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Mon Aug 15 00:09:10 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 141ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1/comentarios/2" for 127.0.0.1 at Mon Aug 15 00:09:12 -0300 2011
+  Processing by ComentariosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"doExREn3LevCjsiHd1xo7xVDOKkEG83GCnCDvtpsYfo=", "post_id"=>"1", "id"=>"2"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE "comentarios"."id" = 2 AND ("comentarios".post_id = 1) LIMIT 1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "comentarios" WHERE "comentarios"."id" = 2
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 78ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Mon Aug 15 00:09:13 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (218.8ms)
+Completed 200 OK in 500ms (Views: 296.9ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:49:31 -0300 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:50:17 -0300 2011
+
+LoadError (Expected C:/ruby/weblog/blog/app/controllers/posts_controller.rb to define PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (46.9ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (109.4ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:53:01 -0300 2011
+
+LoadError (Expected C:/ruby/weblog/blog/app/controllers/posts_controller.rb to define PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (62.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:53:24 -0300 2011
+
+LoadError (Expected C:/ruby/weblog/blog/app/controllers/posts_controller.rb to define PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (15.6ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:54:53 -0300 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:55:00 -0300 2011
+
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:56:55 -0300 2011
+
+LoadError (Expected C:/ruby/weblog/blog/app/controllers/posts_controller.rb to define PostsController):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 11:57:48 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (31.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (93.8ms)
+Completed 200 OK in 859ms (Views: 187.5ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Wed Aug 17 11:57:56 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (15.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (125.0ms)
+Rendered posts/edit.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 234ms (Views: 187.5ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 12:01:39 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 172ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Wed Aug 17 12:01:43 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (406.2ms)
+Completed 200 OK in 594ms (Views: 515.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Wed Aug 17 12:01:56 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (15.6ms)
+Rendered posts/edit.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 12:07:00 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Wed Aug 17 12:07:07 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (15.6ms)
+Rendered posts/edit.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 141ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 12:09:14 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 109ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Wed Aug 17 12:09:18 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (78.1ms)
+Completed 200 OK in 172ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 12:09:55 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (15.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 203ms (Views: 46.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 12:10:10 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 12:12:10 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Wed Aug 17 12:12:22 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (234.4ms)
+Completed 200 OK in 453ms (Views: 328.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Wed Aug 17 12:12:29 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (31.2ms)
+Rendered posts/edit.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 109ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1" for 127.0.0.1 at Wed Aug 17 12:12:38 -0300 2011
+  Processing by PostsController#update as HTML
+  Parameters: {"commit"=>"Update Post", "post"=>{"titulo"=>"primeiro artigo", "conteudo"=>"este e o conteudo do primeiro post"}, "authenticity_token"=>"1kkU8I65Ag8EnE3k+xmAj42a8ZzRiKk3wezOdYkq6OM=", "utf8"=>"✓", "id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mAREL (0.0ms)[0m  [1mUPDATE "posts" SET "updated_at" = '2011-08-17 15:12:38.890625', "titulo" = 'primeiro artigo' WHERE "posts"."id" = 1[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 125ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Wed Aug 17 12:12:38 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (171.9ms)
+Completed 200 OK in 469ms (Views: 218.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 12:12:43 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 12:29:31 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (171.9ms)
+Completed 500 Internal Server Error in 656ms
+
+ActionView::Template::Error (undefined method `show_title?' for #<#<Class:0x4464d20>:0x4463bf8>):
+    12:         <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    13:       <%- end -%>
+    14:       
+    15:       <%- if show_title? -%>
+    16:         <h1><%=h yield(:title) %></h1>
+    17:       <%- end -%>
+    18:       
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__238918830_35852100_0'
+  app/controllers/posts_controller.rb:7:in `index'
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.6ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (46.9ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 12:31:01 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 12:31:01 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Wed Aug 17 12:31:11 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/_form.html.erb (31.2ms)
+Rendered posts/edit.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 219ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 12:31:12 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 12:31:17 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (15.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 78ms (Views: 46.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 12:31:17 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 12:33:51 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 219ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 12:33:51 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at Wed Aug 17 14:12:55 -0300 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/_form.html.erb (15.6ms)
+Rendered posts/edit.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 141ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 14:12:56 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started POST "/posts/1" for 127.0.0.1 at Wed Aug 17 14:12:59 -0300 2011
+  Processing by PostsController#update as HTML
+  Parameters: {"commit"=>"Update Post", "post"=>{"titulo"=>"primeiro artigo", "conteudo"=>"este e o conteudo do primeiro post"}, "authenticity_token"=>"1kkU8I65Ag8EnE3k+xmAj42a8ZzRiKk3wezOdYkq6OM=", "utf8"=>"✓", "id"=>"1"}
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 47ms
+
+
+Started GET "/posts/1" for 127.0.0.1 at Wed Aug 17 14:13:00 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (406.2ms)
+Completed 200 OK in 484ms (Views: 453.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 14:13:00 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 14:13:15 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 344ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 14:13:16 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/posts" for 127.0.0.1 at Wed Aug 17 15:22:01 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 844ms (Views: 171.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Wed Aug 17 15:22:04 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (312.5ms)
+Completed 200 OK in 422ms (Views: 375.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 15:22:05 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 15:32:48 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (140.6ms)
+Completed 500 Internal Server Error in 297ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::FeedEntry):
+    3: <div id="recent_episodes">
+    4:   <h3>Recent Railscasts Episodes</h3>
+    5:   <ul>
+    6:   <% for entry in FeedEntry.all(:limit => 10, :order => "published_at desc") %>
+    7:     <li><%= link_to h(entry.name), entry.url %></li>
+    8:   <% end %>
+    9:   </ul>
+  app/views/posts/index.html.erb:6:in `_app_views_posts_index_html_erb__118639822_36690300_0'
+  app/controllers/posts_controller.rb:7:in `index'
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.2ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (62.5ms)
+
+
+Started GET "/" for 127.0.0.1 at Wed Aug 17 15:35:28 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 94ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Wed Aug 17 15:35:29 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreatePosts (20110814234758)
+Migrating to CreateComentarios (20110814235017)
+Migrating to CreateImovels (20110817212742)
+  [1m[35mSQL (15.6ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "imovels" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "local" text, "area" varchar(255), "valor" varchar(255), "valm2" varchar(255), "data" date, "codigo" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110817212742')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("comentarios")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("imovels")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("posts")
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Thu Aug 18 20:41:42 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (15.6ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (109.4ms)
+Completed 200 OK in 906ms (Views: 218.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Thu Aug 18 20:41:47 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Thu Aug 18 20:44:31 -0300 2011
+  Processing by PostsController#new as HTML
+Rendered posts/_form.html.erb (140.6ms)
+Rendered posts/new.html.erb within layouts/application (531.2ms)
+Completed 200 OK in 625ms (Views: 578.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Thu Aug 18 20:44:32 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Aug 18 20:44:35 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 203ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Thu Aug 18 20:44:36 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Thu Aug 18 20:44:38 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (343.8ms)
+Completed 200 OK in 453ms (Views: 421.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Thu Aug 18 20:44:39 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Thu Aug 18 20:44:45 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 125ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Thu Aug 18 20:44:46 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Thu Aug 18 20:44:48 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPost Load (15.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (453.1ms)
+Completed 200 OK in 531ms (Views: 484.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Thu Aug 18 20:44:49 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Tue Aug 23 12:36:31 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (31.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mImovel Load (0.0ms)[0m  SELECT "imovels".* FROM "imovels" ORDER BY published_at desc LIMIT 10
+SQLite3::SQLException: no such column: published_at: SELECT  "imovels".* FROM "imovels" ORDER BY published_at desc LIMIT 10
+Rendered posts/index.html.erb within layouts/application (78.1ms)
+Completed 500 Internal Server Error in 719ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: published_at: SELECT  "imovels".* FROM "imovels" ORDER BY published_at desc LIMIT 10):
+    5: <div id="imoveis_recentes">
+    6:   <h3>Imoveis recentes coletados</h3>
+    7:   <ul>
+    8:   <% for entry in Imovel.all(:limit => 10, :order => "published_at desc") %>
+    9:     <li><%= link_to h(entry.local), entry.valor %></li>
+    10:   <% end %>
+    11:   </ul>
+  app/views/posts/index.html.erb:8:in `_app_views_posts_index_html_erb__118639822_36789036_0'
+  app/controllers/posts_controller.rb:7:in `index'
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (78.1ms)
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (109.4ms)
+
+
+Started GET "/" for 127.0.0.1 at Tue Aug 23 12:40:11 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mImovel Load (0.0ms)[0m  SELECT "imovels".* FROM "imovels" ORDER BY created_at desc LIMIT 10
+Rendered posts/index.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 219ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Tue Aug 23 12:40:11 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.284', NULL, 392001, '2011-08-23 17:09:44.890625', '
+SHN 05 ATHOS BULCÃO - LUCRO CERTO!!!
+', '109', '2011-08-23 17:09:44.890625', '1.230.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('18.548', '0011-10-08', 402160, '2011-08-23 17:09:45.312500', '
+
+SETOR SHTN TRECHO 2 LT 3 - LIFE RESORT, BLOCO M
+', '62', '2011-08-23 17:09:45.312500', '1.150.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('15.592', '0011-08-08', 340631, '2011-08-23 17:09:45.328125', '
+SETOR SHTN LIFE RESORT BLOCO M 4 ANDAR
+', '60', '2011-08-23 17:09:45.328125', '935.500')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.965', '0011-05-08', 377438, '2011-08-23 17:09:45.328125', '
+
+SETOR SHTN - LIFE RESORT** EXCELENTE **
+', '57', '2011-08-23 17:09:45.328125', '625.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.909', NULL, 394415, '2011-08-23 17:09:45.343750', '
+SETOR SHTN 
+', '55', '2011-08-23 17:09:45.343750', '600.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.943', NULL, 403077, '2011-08-23 17:09:45.359375', '
+
+SETOR SHTN LINDA REFORMA!! NASCENTE!! 9231-9330
+', '53', '2011-08-23 17:09:45.359375', '580.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.377', '0011-11-07', 377031, '2011-08-23 17:09:45.359375', '
+SETOR SHLN 
+', '53', '2011-08-23 17:09:45.359375', '550.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.377', NULL, 387553, '2011-08-23 17:09:45.375000', '
+
+SETOR SHTN LAKE SIDE
+', '53', '2011-08-23 17:09:45.375000', '550.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.739', NULL, 339194, '2011-08-23 17:09:45.390625', '
+SETOR SHTN 
+', '46', '2011-08-23 17:09:45.390625', '540.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.000', NULL, 383115, '2011-08-23 17:09:45.406250', '
+
+SETOR SHTN LAKE SIDE! REFORMADO!!
+', '54', '2011-08-23 17:09:45.406250', '540.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.623', NULL, 405554, '2011-08-23 17:09:45.406250', '
+SETOR SHTN LAKE SIDE
+', '53', '2011-08-23 17:09:45.406250', '510.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.623', NULL, 388364, '2011-08-23 17:09:45.421875', '
+
+SETOR SHTN LAKE SIDE - ACABAMENTO DE ALTO PADRÃO!!!
+', '53', '2011-08-23 17:09:45.421875', '510.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.071', NULL, 238184, '2011-08-23 17:09:45.437500', '
+TRECHO SCEN TRECHO 01 LAKE VIEW RESORT
+', '42', '2011-08-23 17:09:45.437500', '507.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.434', '0011-02-08', 394820, '2011-08-23 17:09:45.437500', '
+
+SETOR SHTN LAKE SIDE
+', '53', '2011-08-23 17:09:45.437500', '500.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.023', '0011-06-08', 354289, '2011-08-23 17:09:45.453125', '
+SHLN QUADRA 01 BLOCO J BIARRITZ
+', '44', '2011-08-23 17:09:45.453125', '485.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.421', NULL, 358275, '2011-08-23 17:09:45.468750', '
+
+SETOR SHTN LAKE SIDE
+', '57', '2011-08-23 17:09:45.468750', '480.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.983', NULL, 399225, '2011-08-23 17:09:45.484375', '
+SHN 04 DUPLEX MOBILIADO NO NOBILE MONUMENTAL
+', '60', '2011-08-23 17:09:45.484375', '479.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.635', NULL, 403136, '2011-08-23 17:09:45.500000', '
+
+SHN 01 BIARRITZ - SÓ 9.800,00M² - EXCELENTE RETORNO LOCAÇÃO
+', '48', '2011-08-23 17:09:45.500000', '462.494')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('14.062', '0011-08-08', 346838, '2011-08-23 17:09:45.500000', '
+SETOR SHTN 
+', '32', '2011-08-23 17:09:45.500000', '450.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.824', '0011-02-08', 399498, '2011-08-23 17:09:45.515625', '
+
+SETOR SHTN GOLDEN TULIP 51 M2, RENDA 3.300.00 MÊS
+', '51', '2011-08-23 17:09:45.515625', '450.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('13.636', NULL, 389426, '2011-08-23 17:09:45.531250', '
+SETOR SHTN LIFE RESORT BLOCO M 3º ANDAR
+', '33', '2011-08-23 17:09:45.531250', '450.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.227', '0011-06-07', 376645, '2011-08-23 17:09:45.531250', '
+
+SHN 01 
+', '44', '2011-08-23 17:09:45.531250', '450.000')[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('15.172', NULL, 397329, '2011-08-23 17:09:45.546875', '
+SETOR SHTN LIFE - SHOW DE APARTAMENTO MOBILIADO!!!
+', '29', '2011-08-23 17:09:45.546875', '440.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.431', NULL, 401467, '2011-08-23 17:09:45.562500', '
+
+TRECHO SCEN TRECHO 01 
+', '51', '2011-08-23 17:09:45.562500', '430.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.222', NULL, -39708, '2011-08-23 17:09:45.578125', '
+SQN 216 BLOCO B 
+', '45', '2011-08-23 17:09:45.578125', '415.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.222', NULL, 309712, '2011-08-23 17:09:45.593750', '
+
+SQN 216 VIEIRA TORRES VENDE REFORMADO, C/ GARAGEM.
+', '45', '2011-08-23 17:09:45.593750', '415.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.789', '0011-10-08', 323528, '2011-08-23 17:09:45.609375', '
+SETOR SHTN PREMIER NASCENTE
+', '38', '2011-08-23 17:09:45.609375', '410.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.111', '0011-12-08', 402700, '2011-08-23 17:09:45.625000', '
+
+SQN 216 *** RWF VENDE MAIS*** VANDERLEY ; 92192589
+', '45', '2011-08-23 17:09:45.625000', '410.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.367', NULL, 399660, '2011-08-23 17:09:45.640625', '
+SQN 216 DE CINEMA ......
+', '49', '2011-08-23 17:09:45.640625', '410.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.067', NULL, 368804, '2011-08-23 17:09:45.656250', '
+
+SQN 216 CANTO-GARAGEM
+', '45', '2011-08-23 17:09:45.656250', '408.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.000', '0011-08-08', 401130, '2011-08-23 17:09:45.671875', '
+SQN 216 LINDO, TOTALMENTE REFORMADO
+', '45', '2011-08-23 17:09:45.671875', '405.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.000', '0011-12-08', 399860, '2011-08-23 17:09:45.687500', '
+
+SQN 216 ÓTIMO APTO!
+', '45', '2011-08-23 17:09:45.687500', '405.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.419', '0011-09-08', 397336, '2011-08-23 17:09:45.687500', '
+SQN 216 REFORMADO - DESOCUPADO
+', '43', '2011-08-23 17:09:45.687500', '405.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.933', NULL, 403909, '2011-08-23 17:09:45.703125', '
+
+SQN 216 * REFORMADO*
+', '45', '2011-08-23 17:09:45.703125', '402.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.500', '0011-01-08', 396574, '2011-08-23 17:09:46.578125', '
+SETOR SHTN 
+', '32', '2011-08-23 17:09:46.578125', '400.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.811', NULL, 351159, '2011-08-23 17:09:46.593750', '
+
+SETOR SHTN 
+', '37', '2011-08-23 17:09:46.593750', '400.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.500', NULL, 342899, '2011-08-23 17:09:46.609375', '
+SETOR SHTN LIFE RESORT - N 4 ANDAR
+', '32', '2011-08-23 17:09:46.609375', '400.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.407', NULL, 402320, '2011-08-23 17:09:46.625000', '
+
+SQN 216 BLOCO G 
+', '54', '2011-08-23 17:09:46.625000', '400.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.889', '0011-10-08', 323704, '2011-08-23 17:09:46.640625', '
+SQN 316 BLOCO K - PRÉDIO REFORMADO - C/ GARAGEM - DESOCUPADO
+', '45', '2011-08-23 17:09:46.640625', '400.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.500', '0011-01-08', 347272, '2011-08-23 17:09:46.656250', '
+
+SQN 314 
+', '38', '2011-08-23 17:09:46.656250', '399.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.667', '0011-05-08', 0, '2011-08-23 17:09:46.671875', '
+SQN 216 BLOCO A 
+', '45', '2011-08-23 17:09:46.671875', '390.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.031', NULL, 213008, '2011-08-23 17:09:46.671875', '
+
+SETOR SHTN LIFE RESORT 32M², MOBILIADO, INF: 8432-1000
+', '32', '2011-08-23 17:09:46.671875', '385.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.419', NULL, 390131, '2011-08-23 17:09:46.687500', '
+SETOR SHTN TRECHO 2 - CONJ. 03 - BL.I - 4º ANDAR
+', '31', '2011-08-23 17:09:46.687500', '385.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.132', '0011-01-08', 382034, '2011-08-23 17:09:46.703125', '
+
+SETOR STN VENDO LINDO APT NO PREMIER AS MARGENS DO LAGO
+', '38', '2011-08-23 17:09:46.703125', '385.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.556', NULL, 398968, '2011-08-23 17:09:46.718750', '
+SQN 216 BLOCO G - EXCELENTE APARTAMENTO DE 1 QUARTO
+', '45', '2011-08-23 17:09:46.718750', '385.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('14.615', '0011-11-07', 377546, '2011-08-23 17:09:46.718750', '
+
+SETOR SHTN LIFE RESORT BLOCO N 2 ANDAR
+', '26', '2011-08-23 17:09:46.718750', '380.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.000', NULL, 378790, '2011-08-23 17:09:46.734375', '
+SETOR SHTN RESIDENCIAL PREMIE
+', '38', '2011-08-23 17:09:46.734375', '380.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.737', NULL, 399180, '2011-08-23 17:09:46.750000', '
+
+SETOR SHTN PREMIER, NASCENTE, MOBILIADO, VISTA LIVRE, VEJA!!!
+', '38', '2011-08-23 17:09:46.750000', '370.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.212', NULL, 215016, '2011-08-23 17:09:46.750000', '
+SHN 01 ST MORITZ 33,4M2 MOBILIADO COM GARAGEM
+', '33', '2011-08-23 17:09:46.750000', '370.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.810', NULL, 400202, '2011-08-23 17:09:46.765625', '
+
+SQN 216 BLOCO H 
+', '42', '2011-08-23 17:09:46.765625', '370.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.167', NULL, 397126, '2011-08-23 17:09:46.781250', '
+SETOR SHTN 
+', '30', '2011-08-23 17:09:46.781250', '365.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.774', NULL, 405043, '2011-08-23 17:09:46.796875', '
+
+SETOR SHTN LIFE RESORT BLOCO B 1º ANDAR
+', '31', '2011-08-23 17:09:46.796875', '365.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.406', NULL, 375597, '2011-08-23 17:09:46.796875', '
+SETOR SHTN OPORTUNIDADE UNICA! O MELHOR LIFE - 9801-0980
+', '32', '2011-08-23 17:09:46.796875', '365.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.111', '0011-12-08', 392886, '2011-08-23 17:09:46.812500', '
+
+SQN 216 BLOCO G 
+', '45', '2011-08-23 17:09:46.812500', '365.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('115', NULL, 175111, '2011-08-23 17:09:46.828125', '
+SETOR SHTN LIFE RESORT DESOCUPADO - 9974-6327 !
+', '3125', '2011-08-23 17:09:46.828125', '360.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.250', NULL, 348548, '2011-08-23 17:09:46.828125', '
+
+SHN 01 
+', '32', '2011-08-23 17:09:46.828125', '360.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.250', NULL, 364999, '2011-08-23 17:09:46.843750', '
+SHN 01 
+', '32', '2011-08-23 17:09:46.843750', '360.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.909', '0011-10-08', 401858, '2011-08-23 17:09:46.859375', '
+
+SHN 01 
+', '33', '2011-08-23 17:09:46.859375', '360.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.250', '0011-02-08', 399481, '2011-08-23 17:09:46.875000', '
+SHN 01 SAINT MORITZ MOBILIADO
+', '32', '2011-08-23 17:09:46.875000', '360.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.889', '0011-03-08', 389650, '2011-08-23 17:09:46.875000', '
+
+SQN 407 EXCELENTE. CONFIRA!
+', '45', '2011-08-23 17:09:46.875000', '355.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.667', '0011-08-07', 392648, '2011-08-23 17:09:46.890625', '
+SETOR SHTN 
+', '30', '2011-08-23 17:09:46.890625', '350.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.963', NULL, 379913, '2011-08-23 17:09:46.906250', '
+
+SETOR SHTN SAINT MORRITZ
+', '27', '2011-08-23 17:09:46.906250', '350.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.140', NULL, 404096, '2011-08-23 17:09:46.921875', '
+SQN 314 :: APTO DE 1 QUARTO C/ ARMARIOS E VISTA LIVRE
+', '43', '2011-08-23 17:09:46.921875', '350.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.292', NULL, 397151, '2011-08-23 17:09:46.921875', '
+
+SQN 407 BLOCO A EDIFICIO TODO EM REFORMA
+', '48', '2011-08-23 17:09:46.921875', '350.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.875', NULL, 362336, '2011-08-23 17:09:47.015625', '
+SHN 01 SAINT MORITZ MOBILIADO
+', '32', '2011-08-23 17:09:47.015625', '348.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('13.600', NULL, 318554, '2011-08-23 17:09:47.015625', '
+
+SETOR SHTN LIFE RESORT, ANDAR ALTO, MOBILIADO, VEJA!
+', '25', '2011-08-23 17:09:47.015625', '340.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.714', NULL, 245072, '2011-08-23 17:09:47.031250', '
+SHN 01 EXCELENTE INVESTIMENTO APTO 1 QTO ÓTIMA RENDA
+', '35', '2011-08-23 17:09:47.031250', '340.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.533', NULL, 392958, '2011-08-23 17:09:47.046875', '
+
+SQN 216 BLOCO B 
+', '45', '2011-08-23 17:09:47.046875', '339.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.791', '0011-01-08', 287537, '2011-08-23 17:09:47.890625', '
+SQN 407 - OPORTUNIDADE-MAURO CATEB VENDE
+', '43', '2011-08-23 17:09:47.890625', '335.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.614', NULL, 395389, '2011-08-23 17:09:47.921875', '
+
+SQN 407 BLOCO A GRANDÃO, VISTA LIVRE
+', '44', '2011-08-23 17:09:47.921875', '335.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.471', '0011-06-08', 213935, '2011-08-23 17:09:47.937500', '
+SCRN 712/713 
+', '51', '2011-08-23 17:09:47.937500', '330.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.000', NULL, 311185, '2011-08-23 17:09:47.953125', '
+
+SETOR SHTN A MELHOR OPÇÃO, LIFE BLOCO A - VISITAS 9202.4442
+', '30', '2011-08-23 17:09:47.953125', '330.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.645', '0011-06-07', 360639, '2011-08-23 17:09:47.968750', '
+SHCGN 708 BLOCO A EDIFÍCIO OLIMPIA RESIDENCE
+', '31', '2011-08-23 17:09:47.968750', '330.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.645', NULL, 189946, '2011-08-23 17:09:47.984375', '
+
+SHN 01 SAINT MORITZ RESIDENCIAL COM SERVIÇO
+', '31', '2011-08-23 17:09:47.984375', '330.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.500', NULL, 392847, '2011-08-23 17:09:47.984375', '
+SQN 407 
+', '44', '2011-08-23 17:09:47.984375', '330.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.500', NULL, 403447, '2011-08-23 17:09:48.000000', '
+
+SQN 407 *** RWF VENDE MAIS ***
+', '44', '2011-08-23 17:09:48.000000', '330.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.333', NULL, 402042, '2011-08-23 17:09:48.015625', '
+SQN 407 EXCELENTE...
+', '45', '2011-08-23 17:09:48.015625', '330.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.854', '0011-11-08', 363169, '2011-08-23 17:09:48.031250', '
+
+SCLRN 716 PROXIMO BANCO DO BRASIL E SUPERM. EXTRA
+', '48', '2011-08-23 17:09:48.031250', '329.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.812', '0011-12-08', 365939, '2011-08-23 17:09:48.031250', '
+SCRN 716 - VISTA LIVRE - VARANDÃO - DESOCUPADO
+', '48', '2011-08-23 17:09:48.031250', '327.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.338', NULL, 263133, '2011-08-23 17:09:48.046875', '
+
+SCRN 702/703 MERIBEL
+', '39', '2011-08-23 17:09:48.046875', '325.175')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.222', NULL, 327328, '2011-08-23 17:09:48.062500', '
+SCLRN 708 NOVO, DESOCUPADO.
+', '45', '2011-08-23 17:09:48.062500', '325.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.558', '0011-01-08', 368977, '2011-08-23 17:09:48.078125', '
+
+SQN 407 DESOCUPADO-VARANDA
+', '43', '2011-08-23 17:09:48.078125', '325.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.386', NULL, 371674, '2011-08-23 17:09:48.078125', '
+SQN 407 VISTA LIVRE,CANTO,IMPERDÍVEL!
+', '44', '2011-08-23 17:09:48.078125', '325.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('137', '0011-11-07', 377545, '2011-08-23 17:09:48.093750', '
+
+SETOR SHTN LIFE RESORT , BLOCO N 2 ANDAR
+', '2344', '2011-08-23 17:09:48.093750', '320.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.143', '0011-05-07', 343133, '2011-08-23 17:09:48.109375', '
+SGAN 914 SOUTH BEACH! ACEITA PROPOSTA!
+', '35', '2011-08-23 17:09:48.109375', '320.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.159', NULL, 381339, '2011-08-23 17:09:48.109375', '
+
+SQN 407 ***RWF VENDE MAIS***
+', '44', '2011-08-23 17:09:48.109375', '315.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.000', NULL, 349770, '2011-08-23 17:09:48.125000', '
+SETOR SHTN LIFE RESORT/MOBILIADO!!! R$ 310MIL
+', '31', '2011-08-23 17:09:48.125000', '310.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.857', NULL, 305923, '2011-08-23 17:09:48.203125', '
+
+SGAN 914 LINDO APARTAMENTO NO SOUTH BEACH
+', '35', '2011-08-23 17:09:48.203125', '310.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.500', NULL, 338674, '2011-08-23 17:09:48.218750', '
+SCRN 712/713 APTO 01 QUARTO COM ARMÁRIOS
+', '56', '2011-08-23 17:09:48.218750', '308.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.302', NULL, 400815, '2011-08-23 17:09:48.234375', '
+
+SCRN 712/713 **LINDÃO E AMPLO**
+', '58', '2011-08-23 17:09:48.234375', '307.500')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.846', '0011-08-08', 401134, '2011-08-23 17:09:48.250000', '
+SHN QUADRA 04 BLOCO B NÓBILE SUÍTE MONUMENTAL 1203
+', '28', '2011-08-23 17:09:48.250000', '303.696')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.143', '0011-02-08', 357523, '2011-08-23 17:09:48.250000', '
+
+SCRN 702/703 
+', '42', '2011-08-23 17:09:48.250000', '300.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.500', NULL, 397613, '2011-08-23 17:09:48.265625', '
+SETOR SHTN 
+', '24', '2011-08-23 17:09:48.265625', '300.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.824', NULL, 343123, '2011-08-23 17:09:48.281250', '
+
+SGAN 914 NASCENTE E REFORMADO.
+', '34', '2011-08-23 17:09:48.281250', '300.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.375', NULL, 387174, '2011-08-23 17:09:48.296875', '
+SHN 01 **SAINT MORITZ** UNID. 205 NASCENTE
+', '32', '2011-08-23 17:09:48.296875', '300.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.973', NULL, 342978, '2011-08-23 17:09:48.296875', '
+
+SETOR SHTN LAKE SIDE 37M² - TENHO 02 UNIDADES
+', '37', '2011-08-23 17:09:48.296875', '295.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.694', NULL, 403174, '2011-08-23 17:09:48.312500', '
+SGAN 906 PRONTA - PAGAMENTO PARCELADO
+', '27', '2011-08-23 17:09:48.312500', '288.740')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.368', NULL, 354689, '2011-08-23 17:09:48.328125', '
+
+SCRN 712/713 BLOCO H 
+', '38', '2011-08-23 17:09:48.328125', '280.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.297', '0011-06-08', 401045, '2011-08-23 17:09:48.343750', '
+SCRN 710/711 
+', '37', '2011-08-23 17:09:48.343750', '270.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.930', NULL, 379486, '2011-08-23 17:09:48.343750', '
+
+SGAN 906 STUDIOS 906 1A OCUPAÇÃO ÓTIMO INVESTIMENTO
+', '27', '2011-08-23 17:09:48.343750', '268.100')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('9.778', NULL, 370828, '2011-08-23 17:09:48.359375', '
+SGAN 906 #ASA NORTE STUDIO 906 KIT DE 27, 28, 29 M² PRONTA PR
+', '27', '2011-08-23 17:09:48.359375', '264.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.667', NULL, 370176, '2011-08-23 17:09:48.375000', '
+
+SCLRN 708 AO LADO DO UNICEUB, ACEITO AP. EM ÁGUAS CLARAS!!!
+', '39', '2011-08-23 17:09:48.375000', '260.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.906', '0011-01-08', 397411, '2011-08-23 17:09:49.218750', '
+SCRN 714/715 ELEVADOR
+', '53', '2011-08-23 17:09:49.218750', '260.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.027', NULL, 402492, '2011-08-23 17:09:49.234375', '
+
+SETOR SHTN LAKE SIDE!!! ACEITA FINANCIAMENTO!!! VISTA P/O LAG
+', '37', '2011-08-23 17:09:49.234375', '260.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.323', NULL, 401225, '2011-08-23 17:09:49.250000', '
+SCRN 710/711 REFORMADO!!DE MUITO BOM GOSTO!!
+', '31', '2011-08-23 17:09:49.250000', '258.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.286', '0011-08-08', 344279, '2011-08-23 17:09:49.250000', '
+
+SGAN 914 SOUTH BEACH - VENDA MAIS!!!
+', '35', '2011-08-23 17:09:49.250000', '255.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.208', NULL, 375496, '2011-08-23 17:09:49.265625', '
+SCLRN 714 IMPERDÍVEL!!!
+', '48', '2011-08-23 17:09:49.265625', '250.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.250', NULL, 362968, '2011-08-23 17:09:49.281250', '
+
+SCLRN 716 ACEITA FGTS E FINANCIAMENTO BANCÁRIO, ELEVADOR, NAS
+', '40', '2011-08-23 17:09:49.281250', '250.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.944', NULL, 390051, '2011-08-23 17:09:49.281250', '
+SCRN 712/713 BLOCO E 
+', '36', '2011-08-23 17:09:49.281250', '250.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.556', '0011-05-08', 359012, '2011-08-23 17:09:49.312500', '
+
+SCRN 714/715 
+', '45', '2011-08-23 17:09:49.312500', '250.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.556', '0011-05-08', 320950, '2011-08-23 17:09:49.406250', '
+SCRN 714/715 COM TERRAÇO E ELEVADOR.
+', '45', '2011-08-23 17:09:49.406250', '250.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.556', '0011-05-08', 400680, '2011-08-23 17:09:49.406250', '
+
+SCRN 714/715 COMPRE 45M² E GANHE UMA COBERTURA PRIVATIVA DE 4
+', '45', '2011-08-23 17:09:49.406250', '250.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.000', NULL, 288524, '2011-08-23 17:09:49.421875', '
+SHCGN 708 
+', '31', '2011-08-23 17:09:49.421875', '248.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.447', NULL, 392115, '2011-08-23 17:09:49.437500', '
+
+SCEN TRECHO 02 FLAT KUBITSCHEK PLAZA
+', '38', '2011-08-23 17:09:49.437500', '245.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.806', NULL, 370753, '2011-08-23 17:09:49.453125', '
+SCRN 712/713 **DESOCUPADO*GRACIOSO**
+', '36', '2011-08-23 17:09:49.453125', '245.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.424', NULL, 370368, '2011-08-23 17:09:49.453125', '
+
+SHN QUADRA 02 BLOCO E KUBITSCHEK PLAZA
+', '33', '2011-08-23 17:09:49.453125', '245.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.951', '0011-08-08', 339275, '2011-08-23 17:09:49.468750', '
+SCRN 712/713 BLOCO F 
+', '41', '2011-08-23 17:09:49.468750', '244.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.000', NULL, 384334, '2011-08-23 17:09:49.484375', '
+
+CLN 307 KIT LINDÍSSIMA!!! COM VISTA LIVRE!!!
+', '30', '2011-08-23 17:09:49.484375', '240.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.000', NULL, 383749, '2011-08-23 17:09:49.484375', '
+CLN 307 LINDO APARTAMENTO DE 01 QUARTO!!! COM VISTA LIVRE!!!
+', '30', '2011-08-23 17:09:49.484375', '240.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.714', NULL, 400013, '2011-08-23 17:09:49.500000', '
+
+SCLRN 712 
+', '42', '2011-08-23 17:09:49.500000', '240.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.581', '0011-04-08', 368511, '2011-08-23 17:09:49.515625', '
+SCLRN 715 BLOCO E 
+', '43', '2011-08-23 17:09:49.515625', '240.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.800', NULL, 400533, '2011-08-23 17:09:49.531250', '
+
+SCRN 712/713 
+', '50', '2011-08-23 17:09:49.531250', '240.000')[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.103', NULL, 257843, '2011-08-23 17:09:49.531250', '
+SGAN 914 LINDÍSSIMA, REFORMADÍSSIMA#VENDIDA 18-08-11#
+', '29', '2011-08-23 17:09:49.531250', '235.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('3.651', NULL, 386973, '2011-08-23 17:09:49.546875', '
+
+SCLRN 716 DUPLEX COM 63 M2 - MARAVILHOSO!!
+', '63', '2011-08-23 17:09:49.546875', '230.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.053', '0011-01-08', 377274, '2011-08-23 17:09:49.562500', '
+SCRN 708/709 
+', '38', '2011-08-23 17:09:49.562500', '230.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.765', '0011-09-07', 374628, '2011-08-23 17:09:49.578125', '
+
+SGAN 914 *** MONTE CARLLO ***
+', '34', '2011-08-23 17:09:49.578125', '230.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.673', NULL, 374691, '2011-08-23 17:09:49.578125', '
+SCLRN 714 EXCELENTE.......
+', '49', '2011-08-23 17:09:49.578125', '229.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.783', NULL, 402778, '2011-08-23 17:09:49.593750', '
+
+SCLRN 711 REFORMADO, COM VARANDA TERRAÇO INDIVIDUAL.58M²
+', '46', '2011-08-23 17:09:49.593750', '220.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.681', NULL, 350335, '2011-08-23 17:09:49.609375', '
+SCLRN 714 BLOCO C 
+', '47', '2011-08-23 17:09:49.609375', '220.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.400', '0011-12-08', 402793, '2011-08-23 17:09:49.609375', '
+
+SCLRN 716 
+', '50', '2011-08-23 17:09:49.609375', '220.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.789', '0011-11-08', 379432, '2011-08-23 17:09:49.625000', '
+SCLRN 716 VEJA O VÍDEO. ACEITA FINANC. + ELEVADOR.**
+', '38', '2011-08-23 17:09:49.625000', '220.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.111', '0011-01-08', 377249, '2011-08-23 17:09:49.640625', '
+
+SCRN 708/709 
+', '36', '2011-08-23 17:09:49.640625', '220.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.681', NULL, 398142, '2011-08-23 17:09:49.656250', '
+SCRN 708/709 
+', '47', '2011-08-23 17:09:49.656250', '220.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.111', NULL, 330543, '2011-08-23 17:09:49.656250', '
+
+SCRN 710/711 
+', '36', '2011-08-23 17:09:49.656250', '220.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.238', '0011-01-07', 388473, '2011-08-23 17:09:49.671875', '
+SCRN 710/711 BLOCO D ED. RIO NEGRO
+', '42', '2011-08-23 17:09:49.671875', '220.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.641', NULL, 358212, '2011-08-23 17:09:49.687500', '
+
+SCRN 714/715 LINDO AP.- ELEVADOR - V. LIVRE - NASCENTE!!
+', '39', '2011-08-23 17:09:49.687500', '220.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.333', '0011-04-08', 392720, '2011-08-23 17:09:50.484375', '
+SGAN 912 
+', '30', '2011-08-23 17:09:50.484375', '220.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.574', NULL, 377511, '2011-08-23 17:09:50.500000', '
+
+SCLRN 713 BLOCO D 
+', '47', '2011-08-23 17:09:50.500000', '215.000')[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.963', NULL, 403787, '2011-08-23 17:09:50.500000', '
+SGAN 912 EXCELENTE KIT DIVIDIDA NO PARK VILLE
+', '27', '2011-08-23 17:09:50.500000', '215.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.500', NULL, 398335, '2011-08-23 17:09:50.515625', '
+
+SCRN 702/703 BLOCO H MERIBEL - APTO NOVO - ÁGIO
+', '28', '2011-08-23 17:09:50.515625', '210.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.000', NULL, 384094, '2011-08-23 17:09:50.531250', '
+SCRN 710/711 SALA E QUARTO !!!
+', '30', '2011-08-23 17:09:50.531250', '210.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.526', NULL, 392156, '2011-08-23 17:09:50.546875', '
+
+SCRN 714/715 
+', '38', '2011-08-23 17:09:50.546875', '210.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.778', NULL, 401163, '2011-08-23 17:09:50.546875', '
+SGAN 906 STUDIO 906 COM GARAGEM - VENDA MAIS!!!
+', '27', '2011-08-23 17:09:50.546875', '210.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.400', NULL, 405336, '2011-08-23 17:09:50.562500', '
+
+SGAN 911 KIT ORIGINAL DESOCUPADA NO GARDEN PARK
+', '25', '2011-08-23 17:09:50.562500', '210.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.077', NULL, 370025, '2011-08-23 17:09:50.578125', '
+SGAN 912 MASTER PLACE, SEMI MOBILIADA, ALUGADA
+', '26', '2011-08-23 17:09:50.578125', '210.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.541', NULL, 364683, '2011-08-23 17:09:50.593750', '
+
+SCLRN 716 LINDA VISTA COM ELEVADOR
+', '37', '2011-08-23 17:09:50.593750', '205.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.000', '0011-12-08', 367011, '2011-08-23 17:09:50.609375', '
+SCLRN 709 OPORTUNIDADE AC. FINANC. FGTS DESOCUPADO
+', '40', '2011-08-23 17:09:50.609375', '200.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.061', NULL, 401295, '2011-08-23 17:09:50.609375', '
+
+SCRN 712/713 AC. FINAC./FGTS
+', '33', '2011-08-23 17:09:50.609375', '200.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.649', NULL, 402226, '2011-08-23 17:09:50.625000', '
+SCLRN 712 BLOCO G * EXCELENTE APARTAMENDO COM 43M² *
+', '43', '2011-08-23 17:09:50.625000', '199.900')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.657', '0011-06-07', 381514, '2011-08-23 17:09:50.640625', '
+
+SCLRN 709 BLOCO G 
+', '35', '2011-08-23 17:09:50.640625', '198.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.429', NULL, 383863, '2011-08-23 17:09:50.656250', '
+SCRN 702/703 BLOCO G ENTRADA 45
+', '35', '2011-08-23 17:09:50.656250', '190.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.333', NULL, 347903, '2011-08-23 17:09:50.656250', '
+
+SCRN 710/711 BLOCO B 
+', '30', '2011-08-23 17:09:50.656250', '190.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.781', NULL, 289971, '2011-08-23 17:09:50.671875', '
+SCRN 710/711 WWW.VIEIRATORRES.COM.BR
+', '32', '2011-08-23 17:09:50.671875', '185.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('3.600', NULL, 350471, '2011-08-23 17:09:50.687500', '
+
+SCRN 710/711 50M2 C/SALA, COPA E SUITE. VEJA FOTOS!
+', '50', '2011-08-23 17:09:50.687500', '180.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.294', '0011-06-07', 367033, '2011-08-23 17:09:50.703125', '
+SCRN 710/711 DESOCUPADO, AC. FINANCIAMENTO 3964-4551***
+', '34', '2011-08-23 17:09:50.703125', '180.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.955', NULL, 379441, '2011-08-23 17:09:50.703125', '
+
+SCLRN 712 
+', '22', '2011-08-23 17:09:50.703125', '175.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.538', NULL, 371899, '2011-08-23 17:09:50.718750', '
+CLN 303 BLOCO A - 01 QUARTO - KITINETE-KITNET-
+', '26', '2011-08-23 17:09:50.718750', '170.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.800', NULL, 404265, '2011-08-23 17:09:50.734375', '
+
+CLN 409 BLOCO D * LINDA, REFORMADA, DESOCUPADA * 8555-7003 *
+', '25', '2011-08-23 17:09:50.734375', '170.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.312', NULL, 404359, '2011-08-23 17:09:50.750000', '
+SCRN 710/711 DESOCUPADA, C/ ELEVADOR,VARANDA 32M²
+', '32', '2011-08-23 17:09:50.750000', '170.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.474', NULL, 402238, '2011-08-23 17:09:50.750000', '
+
+SCRN 716 - 01 QTO - 3º ANDAR – 38,2M² - VISTA LIVRE!*
+', '38', '2011-08-23 17:09:50.750000', '170.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.333', NULL, 385048, '2011-08-23 17:09:50.765625', '
+CLN 113 KIT DE ESQUINA COM JARDIM NA FRENTE E ENTRADA INDEPEN
+', '30', '2011-08-23 17:09:50.765625', '160.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.517', NULL, 320161, '2011-08-23 17:09:50.781250', '
+
+SCRN 714/715 BLOCO G ENTRADA 31
+', '29', '2011-08-23 17:09:50.781250', '160.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('3.605', '0011-07-07', 249760, '2011-08-23 17:09:50.796875', '
+CLN 312 BLOCO E 
+', '43', '2011-08-23 17:09:50.796875', '155.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.143', '0011-11-07', 393118, '2011-08-23 17:09:50.812500', '
+
+CLN 105 BLOCO D 
+', '21', '2011-08-23 17:09:50.812500', '150.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.143', '0011-02-08', 351562, '2011-08-23 17:09:50.812500', '
+CLN 113 BLOCO A MOBILIADA
+', '21', '2011-08-23 17:09:50.812500', '150.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.800', '0011-08-08', 400978, '2011-08-23 17:09:50.859375', '
+
+SCLRN 712 BLOCO B 
+', '25', '2011-08-23 17:09:50.859375', '145.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES (NULL, NULL, 353222, '2011-08-23 17:09:50.859375', '
+SHN 01 ATHOS BULCÃO RESIDENCE SERVICE ATÉ 30/11/2010
+', '30', '2011-08-23 17:09:50.859375', '1')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.932', NULL, 403327, '2011-08-23 17:09:50.875000', '
+
+SETOR SHTN LAKE VIEW RESORT
+', '59', '2011-08-23 17:09:50.875000', '645.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.100', NULL, 370933, '2011-08-23 17:09:50.890625', '
+SETOR SHTN 
+', '48', '2011-08-23 17:09:50.890625', '532.780')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.612', NULL, 377239, '2011-08-23 17:09:50.906250', '
+
+SHN 04 EXCELENTE FLAT NOBILE SUÍTES MONUMENTAL 91269022
+', '49', '2011-08-23 17:09:50.906250', '520.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.824', '0011-04-08', 399504, '2011-08-23 17:09:52.187500', '
+SETOR SHTN GOLDEN TULIP 51 M2 NO POOL
+', '51', '2011-08-23 17:09:52.187500', '450.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.636', NULL, 404884, '2011-08-23 17:09:52.203125', '
+
+SQN 210 BLOCO H 
+', '55', '2011-08-23 17:09:52.203125', '420.000')[0m
+  [1m[35mAREL (15.6ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.686', '0011-07-07', 392119, '2011-08-23 17:09:52.203125', '
+SCEN TRECHO 02 MANHATHAN FLAT
+', '70', '2011-08-23 17:09:52.203125', '398.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.964', NULL, 348016, '2011-08-23 17:09:52.218750', '
+
+SQN 210 BLOCO A 3º ANDAR
+', '56', '2011-08-23 17:09:52.218750', '390.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.091', NULL, 373530, '2011-08-23 17:09:52.234375', '
+SQN 210 BLOCO A DESOCUPADO
+', '55', '2011-08-23 17:09:52.234375', '390.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('11.935', NULL, 401088, '2011-08-23 17:09:52.250000', '
+
+SETOR SHTN LINDO LIFE RESORT VISTA LAGO 9126-9022
+', '31', '2011-08-23 17:09:52.250000', '370.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('12.167', NULL, 405035, '2011-08-23 17:09:52.250000', '
+SETOR SHTN 
+', '30', '2011-08-23 17:09:52.250000', '365.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.500', '0011-03-08', 358467, '2011-08-23 17:09:52.265625', '
+
+SHCGN 703 
+', '48', '2011-08-23 17:09:52.265625', '360.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.140', NULL, 403999, '2011-08-23 17:09:52.281250', '
+SQN 314 :: 1 QUARTO - VISTA BELÍSSIMA
+', '43', '2011-08-23 17:09:52.281250', '350.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.000', NULL, 387302, '2011-08-23 17:09:52.281250', '
+
+SQN 407 REFORMADO!!!! DESOCUPADO!!!!
+', '50', '2011-08-23 17:09:52.281250', '350.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.293', NULL, 358468, '2011-08-23 17:09:52.296875', '
+SHN 05 
+', '41', '2011-08-23 17:09:52.296875', '340.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('8.250', NULL, 366813, '2011-08-23 17:09:52.312500', '
+
+SQN 316 BLOCO K 
+', '40', '2011-08-23 17:09:52.312500', '330.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.577', NULL, 383484, '2011-08-23 17:09:52.328125', '
+SHN 01 
+', '26', '2011-08-23 17:09:52.328125', '275.000')
+  [1m[36mAREL (15.6ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('10.385', NULL, 360803, '2011-08-23 17:09:52.328125', '
+
+SEPN 711/911 PARK VILLE
+', '26', '2011-08-23 17:09:52.328125', '270.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.667', NULL, 359318, '2011-08-23 17:09:52.343750', '
+SCRN 704/705 BLOCO F ENTRADA 15
+', '39', '2011-08-23 17:09:52.343750', '260.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.944', '0011-08-08', 383952, '2011-08-23 17:09:52.359375', '
+
+SCRN 712/713 BLOCO B 
+', '36', '2011-08-23 17:09:52.359375', '250.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.944', '0011-02-08', 365671, '2011-08-23 17:09:52.390625', '
+SCRN 712/713 ESCRITURA RESIDENCIAL BLOCO COM ELEVADOR
+', '36', '2011-08-23 17:09:52.390625', '250.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('4.889', '0011-11-07', 255517, '2011-08-23 17:09:52.390625', '
+
+SCRN 716 OPORTUNIDADE
+', '45', '2011-08-23 17:09:52.390625', '220.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('7.857', NULL, 402068, '2011-08-23 17:09:52.406250', '
+SETOR STN ED. TOSCANA COM ARMÁRIOS!
+', '28', '2011-08-23 17:09:52.406250', '220.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.526', NULL, 374096, '2011-08-23 17:09:52.421875', '
+
+SCLRN 714 MARAVILHOSO
+', '38', '2011-08-23 17:09:52.421875', '210.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.526', NULL, 350458, '2011-08-23 17:09:52.437500', '
+SCRN 714/715 >OTIMO APARTAMENTO COM VARANDA
+', '38', '2011-08-23 17:09:52.437500', '210.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.128', NULL, 400005, '2011-08-23 17:09:52.437500', '
+
+SCRN 714/715 BLOCO E QUARTO, SALA, COZINHA, BANHEIRO
+', '39', '2011-08-23 17:09:52.437500', '200.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('5.758', NULL, 358469, '2011-08-23 17:09:52.453125', '
+SHN QUADRA 02 BLOCO J 
+', '33', '2011-08-23 17:09:52.453125', '190.000')
+  [1m[36mAREL (0.0ms)[0m  [1mINSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.429', NULL, 365666, '2011-08-23 17:09:52.468750', '
+
+SCRN 710/711 OTIMO PREÇO
+', '28', '2011-08-23 17:09:52.468750', '180.000')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "imovels" ("valm2", "data", "codigo", "updated_at", "local", "area", "created_at", "valor") VALUES ('6.138', '0011-03-08', 384474, '2011-08-23 17:09:52.468750', '
+SCLRN 710 01 QUARTO!!! COM VARANDA!!!
+', '29', '2011-08-23 17:09:52.468750', '178.000')
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Tue Aug 23 14:10:49 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mImovel Load (0.0ms)[0m  SELECT "imovels".* FROM "imovels" ORDER BY created_at desc LIMIT 10
+Rendered posts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 500ms (Views: 140.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Tue Aug 23 14:10:52 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/180.000" for 127.0.0.1 at Tue Aug 23 14:11:09 -0300 2011
+
+ActionController::RoutingError (No route matches "/180.000"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Tue Aug 23 14:11:34 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+  [1m[36mComentario Load (0.0ms)[0m  [1mSELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (312.5ms)
+Completed 200 OK in 422ms (Views: 390.6ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Tue Aug 23 14:11:35 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at Tue Aug 23 14:11:42 -0300 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+  [1m[35mComentario Load (0.0ms)[0m  SELECT "comentarios".* FROM "comentarios" WHERE ("comentarios".post_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 1 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 203ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Tue Aug 23 14:11:43 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Aug 23 14:11:47 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mImovel Load (0.0ms)[0m  [1mSELECT "imovels".* FROM "imovels" ORDER BY created_at desc LIMIT 10[0m
+Rendered posts/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 141ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Tue Aug 23 14:11:47 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Tue Aug 23 14:14:26 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.0ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mImovel Load (0.0ms)[0m  [1mSELECT "imovels".* FROM "imovels" ORDER BY created_at desc LIMIT 10[0m
+Rendered posts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 125ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at C:/RailsInstaller/Ruby1.8.7/lib/ruby/1.8/webrick/httpserver.rb:104)
+
+
+Started GET "/" for 127.0.0.1 at Tue Aug 23 14:24:06 -0300 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.0ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mImovel Load (0.0ms)[0m  SELECT "imovels".* FROM "imovels" ORDER BY created_at desc LIMIT 10
+Rendered posts/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 391ms (Views: 78.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css" for 127.0.0.1 at Tue Aug 23 14:24:09 -0300 2011
+
+ActionController::RoutingError (No route matches "/stylesheets/application.css"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.0ms)
+
+
+Started GET "/180.000" for 127.0.0.1 at Tue Aug 23 14:24:13 -0300 2011
+
+ActionController::RoutingError (No route matches "/180.000"):
+  
+
+Rendered C:/RailsInstaller/Ruby1.8.7/lib/ruby/gems/1.8/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)

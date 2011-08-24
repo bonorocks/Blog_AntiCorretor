@@ -1,0 +1,27 @@
+<h1>Listando comentarios</h1>
+
+<table>
+  <tr>
+    <th>Autor</th>
+    <th>Conteudo</th>
+    <th>Post</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comentarios.each do |comentario| %>
+  <tr>
+    <td><%= comentario.autor %></td>
+    <td><%= comentario.conteudo %></td>
+    <td><%= comentario.post %></td>
+    <td><%= link_to 'Mostrar', comentario %></td>
+    <td><%= link_to 'Editar', edit_comentario_path(comentario) %></td>
+    <td><%= link_to 'Excluir', comentario, :confirm => 'Excluir?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Comentario', new_comentario_path %>

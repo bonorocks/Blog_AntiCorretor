@@ -1,0 +1,44 @@
+<h1>Blog AntiCorretor</h1>
+<p class="notice"><%= notice %></p>
+ 
+<h2><%= @post.titulo %></h2>
+<p><%= @post.conteudo %></p>
+ 
+<h3>Comentarios</h3>
+<% @post.comentarios.each do |comentario| %>
+  <p>
+    <b>Autor:</b>
+    <%= comentario.autor %>
+  </p>
+ 
+  <p>
+    <b>Comentario:</b>
+    <%= comentario.conteudo %>
+  </p>
+<p>
+  <%= link_to 'Excluir Comentario', [comentario.post, comentario],
+               :confirm => 'Tem certeza?',
+               :method => :delete %>
+</p
+<hr />
+<% end %>
+ 
+<h3>Adicione um comentario:</h3>
+<%= form_for([@post, @post.comentarios.build]) do |f| %>
+  <div class="field">
+    <%= f.label :autor %><br />
+    <%= f.text_field :autor %>
+  </div>
+  <div class="field">
+    <%= f.label :conteudo %><br />
+    <%= f.text_area :conteudo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+<br />
+ 
+<%= link_to 'Editar artigo', edit_post_path(@post) %> |
+<%= link_to 'Voltar aos artigos', posts_path %>

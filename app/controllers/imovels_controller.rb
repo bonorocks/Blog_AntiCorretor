@@ -1,0 +1,2 @@
+class ImovelsController < ApplicationController
+end
