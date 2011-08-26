@@ -2,5 +2,5 @@
   task :apagaImovels => :environment do
     connection = ActiveRecord::Base.connection
     connection.execute("DELETE FROM Imovels")
-    puts "* dropped table '#{table}'"
+    puts "* Dados de imovels apagados!'"
   end
