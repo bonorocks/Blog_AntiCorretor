@@ -21,31 +21,50 @@ task :carrega => :environment do
       bairro = item.at_css(".bairro").text.strip    
       local   = item.at_css(".localizacao").text.strip
       icones = item.search('td.icones')
+      
       numqt = icones[0].text.strip
-      numqt = Integer(numqt)
+      if !numqt.nil?
+        numqt = Integer(numqt)
+      else
+        numqt = 0
+      end
+     
       numst = icones[1].text.strip
-      numst = Integer(numst)
+       if !numst.nil?
+        numst = Integer(numst)
+      else
+        numst = 0
+      end
+      
       numgar = icones[2].text.strip
-      numgar = Integer(numgar)
+      if !numgar.nil?
+        numgar = Integer(numgar)
+      else
+        numgar = 0
+      end
+      
       area   = item.at_css(".m2").text[/[0-9\.]+/] 
-      area = Integer(area)
+      if !area.nil?
+        area = Integer(area)
+      else
+        area = 0
+      end
+      
       valor  = item.at_css(".valores").text[/[0-9\.]+/]
       if !valor.nil?
        valor = Integer(valor.delete('.'))
       end
       valm2 = item.at_css(".v_m2").text[/[0-9\.]+/]
       if !valm2.nil?
-         valm2 = Integer(valm2.delete('.'))
+        valm2 = Integer(valm2.delete('.'))
+      else
+        valm2 = 0
       end      
       data    = item.at_css(".atualizacao").text.strip  
       link    = item.css('.localizacao a').map { |link| link['href'] }
       codigo   = link.to_s.slice(-6..-1) 
       
       puts "#{cidade} - #{local} - #{numqt} - #{numst} - #{numgar} - #{area} - #{valor} - #{valm2} - #{data} - #{codigo}"
-      
-      #REFAZER TUDO, COLOCAAR NUM DE QT, NUM SUITES, NUM GARAGENS; TESTAR LOCALMENTE APAGANDO, A BASE, RODANDO O DB:MIGRATE E 
-      #CARREGANDO DE NOVO, AVALIAR PREÇO MEDIO, MANDAR PRO GIT;
-      #MANDAR PRO HEROKU, RODAR DBMIGRATE NO HEROKU, CARREGA NO HEROKU E TESTA NA PAGINA.
       
       Imovel.create(
         :cidade => cidade,
