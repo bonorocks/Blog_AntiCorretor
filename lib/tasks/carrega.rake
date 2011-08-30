@@ -53,6 +53,8 @@ task :carrega => :environment do
       valor  = item.at_css(".valores").text[/[0-9\.]+/]
       if !valor.nil?
        valor = Integer(valor.delete('.'))
+      else
+        valor = 0
       end
       valm2 = item.at_css(".v_m2").text[/[0-9\.]+/]
       if !valm2.nil?
