@@ -1,4 +1,4 @@
- desc "Apaga tabela de imoveis"
+ desc "Apaga  imoveis da tabela"
   task :apagaImovels => :environment do
     connection = ActiveRecord::Base.connection
     connection.execute("DELETE FROM Imovels")
