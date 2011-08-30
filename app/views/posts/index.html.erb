@@ -4,7 +4,7 @@
   <h3>Imoveis recentes coletados</h3>
   <ul>
   <% for entry in Imovel.all(:limit => 10, :order => "created_at desc") %>
-    <li><%= link_to h(entry.local), entry.valor %></li>
+    <li><%= link_to h(entry.local)%></li>
   <% end %>
   </ul>
 </div>
