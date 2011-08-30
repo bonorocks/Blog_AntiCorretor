@@ -56,12 +56,14 @@ task :carrega => :environment do
       else
         valor = 0
       end
+      
       valm2 = item.at_css(".v_m2").text[/[0-9\.]+/]
       if !valm2.nil?
         valm2 = Integer(valm2.delete('.'))
       else
         valm2 = 0
-      end      
+      end   
+      
       data    = item.at_css(".atualizacao").text.strip  
       link    = item.css('.localizacao a').map { |link| link['href'] }
       codigo   = link.to_s.slice(-6..-1) 
