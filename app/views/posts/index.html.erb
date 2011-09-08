@@ -12,7 +12,7 @@
 <% @posts.each do |post| %>
 <h2><%= link_to post.titulo, post %></h2>
 <p><%= post.conteudo %></p>
-<%= link_to 'Ver mais', post %>
+<%= link_to 'Ver comentarios', post %>
 <%= link_to '[Editar]', edit_post_path(post) %>
 <%= link_to '[Excluir]', post, :confirm => 'Tem certeza?', :method => :delete %>
 <hr />

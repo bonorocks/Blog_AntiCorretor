@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+
+  # Requisicao de autenticacao
+   before_filter :authenticate, :except => [:index, :show]
+   
   # GET /posts
   # GET /posts.xml
   def index
@@ -80,4 +84,15 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  #Adicionando codigo par autenticação básica
+  
+   private
+
+   def authenticate
+      authenticate_or_request_with_http_basic do |name, password|
+         name =="corretor" && password == "anticorretor"
+      end
+   end
+
 end

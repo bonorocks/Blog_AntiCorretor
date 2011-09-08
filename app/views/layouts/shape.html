@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head>
+        <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false'></script>
+        <script type='text/javascript' src='http://api.maplarge.com/Scripts/v4.js'></script>
+        <script type='text/javascript'>
+maplarge.onload(function () {
+
+
+    var layerStyle = {
+        query: {
+            table: 'BlockGroup',
+            select: 'geo.poly'
+        },
+        style: {
+            method: 'interval', //special function name
+            //the column to shade by
+            shadeBy: 'BlockGroup.inc', //Must be a Numeric column (Int or Double)
+            colors: [
+                      //gradient from min to max
+                     { min: 'Green-128', max: 'Yellow-128' },
+                     { min: 'Yellow-128', max: 'Red-128' },
+                     { min: 'Red-128', max: 'Purple-128' }
+                     
+                 ],
+            ranges: [  //must have same number of ranges and colors
+                    {min: 10000, max: 30000 }, 
+                    { min: 30000, max: 70000 },
+                     { min: 70000, max: 100000 }
+                ],
+            borderColorOffset: -50
+            //BorderColorOffset is used to adjust the border color that matches the shape       
+            //negative is darker, positive it lighter.  
+
+        },
+        //onClick Fires when layer object on the map is clicked
+        //The "data" property contains information about the object you clicked.
+        //any html returned will be placed in the balloon that opens. 
+        onClick: function (data, layer) {
+            //try setting a break point in Firebug, 
+            //data.data will contain a property for each
+            return "<div style='width:200px;'>" +
+                    "You clicked a Block Group! It's median household income is $" +
+                        data.data.inc +
+                "</div>";
+        },
+        onHover: function (data, layer) {
+            return data.data.inc;
+        },
+        hoverFields: ['inc']
+
+    };
+
+
+
+    //create a new div and add to document 
+    //you could also fetch the element by id
+    var div = ml.create('div', "width:600px; height:600px;", document.body);
+
+    var map = new ml.map(div, { lat: 34, lng: -84, z: 5 });
+    var layer = new ml.layer(map, layerStyle);
+    layer.show();
+
+
+
+});
+</script></head><body></body></html>
