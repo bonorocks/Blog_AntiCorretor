@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110829213654) do
+ActiveRecord::Schema.define(:version => 20110911215851) do
 
   create_table "comentarios", :force => true do |t|
     t.string   "autor"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(:version => 20110829213654) do
     t.integer  "valm2"
     t.date     "data"
     t.integer  "codigo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "indices", :force => true do |t|
+    t.string   "endereco"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "numqt"
+    t.integer  "valmed"
+    t.integer  "valm2med"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

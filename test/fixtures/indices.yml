@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  endereco: MyString
+  latitude: 1.5
+  longitude: 1.5
+  numqt: 1
+  valmed: 1
+  valm2med: 1
+
+two:
+  endereco: MyString
+  latitude: 1.5
+  longitude: 1.5
+  numqt: 1
+  valmed: 1
+  valm2med: 1
