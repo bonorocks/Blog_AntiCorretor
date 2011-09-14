@@ -1,25 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+            
+      <%= yield %>
+    </div>
+<div style="text-align: center;"><small
+ style="font-style: italic;">Powered by&nbsp; <img
+ style="width: 37px; height: 46px;" alt=""
+ src="/images/rails.png">&nbsp; Copyright BonoRocks 2011 v1.0</small></div>
 
-<head>
-   <title>BLOG - AntiCorretor</title>
-   <!-- Rails scaffolding CSS -->
-   <%= stylesheet_link_tag 'scaffold' %>
-   <!-- Your custom CSS for blog --> 
-   <%= stylesheet_link_tag 'myblog_style' %>  
-</head> 
- 
-<body> 
-<div class="container">
-     <div class="span-24">
-          <div style="border-top:#ddd 1px solid;border-bottom:#ddd 1px solid;margin-top:20px;margin-bottom:20px;padding-top:15px;padding-bottom:15px">
-         <h2 style="font-size:37px;"> <font color="blue">Bem-vindo ao site AntiCorretor!</font></h2>         
-	</div> 
-</div> 
-
-
-<%= yield %>
-
-
-</body> 
-</html
+  </body>
+</html>

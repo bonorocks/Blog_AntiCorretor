@@ -5,7 +5,9 @@ Blog::Application.routes.draw do
   end
 
   root :to => "posts#index"
-
+  
+ resources :indices
+ match 'indices' => 'indices#index'
 
 
   # The priority is based upon order of creation:

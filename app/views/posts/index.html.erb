@@ -1,24 +1,41 @@
-<div id="imoveis_recentes">
-<table style="text-align: left; width: 873px; height: 316px;"
+<table style="text-align: left; width: 963px; height: 160px;"
  border="1" cellpadding="2" cellspacing="2">
-  <tbody>
+  <tbody
+ style="color: rgb(0, 0, 0); background-color: rgb(204, 204, 255);"
+ alink="#000099" link="#000099" vlink="#990099">
     <tr>
       <td style="height: 54px; text-align: center;"><span
  class="Apple-style-span"
  style="color: rgb(51, 51, 51); font-family: verdana,arial,helvetica,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18px; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <h1><font color="blue"><i>AntiCorretor.org</i></font></h1>
+      <h1><span class="Apple-style-span"
+ style="color: rgb(51, 51, 51); font-family: verdana,arial,helvetica,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18px; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"><img
+ style="width: 85px; height: 75px;" src="/images/casa.jpg"></span></h1>
+      <h1><span class="Apple-style-span"
+ style="color: rgb(51, 51, 51); font-family: verdana,arial,helvetica,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18px; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);"></span><font
+ color="blue"><i>AntiCorretor.org</i></font></h1>
       </span></td>
       <td style="height: 54px; text-align: center;">
-      <h3>Indices recentes coletados:</h3>
+      <h3 font-size: 14px;>Agora &eacute; a vez do comprador!</h3>
       </td>
     </tr>
-    <tr>
-      <td style="width: 481px; height: 142px;"><span
- class="Apple-style-span"
- style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;">
-<img style="width: 105px; height: 105px;"
- alt="" src="localhost/public/images/casa.jpg">&nbsp;
-&nbsp; &nbsp;SEJA BEM-VINDO! Este &eacute; o site
+  </tbody>
+</table>
+
+<div id="indices_recentes"
+ style="border: 1px solid rgb(102, 102, 102); margin: 8px 215pt 16px 16px; padding: 4px; float: right; background-color: rgb(221, 221, 221);">
+<h3 margin: 0; font-size: 1em;>Indices recentes coletados (P.Piloto e SW):</h3>
+
+<ul list-style="" none="" margin-left="" 8px="" padding-left:0="">
+ <% for entry in Indice.all(:limit => 10, :order => "created_at desc") %>
+    <li><%= link_to h(entry.endereco), :controller=>"indices", :action=>"index" %></li>
+  <% end %>
+</ul>
+</div>
+<span class="Apple-style-span" 
+ style="color: rgb(0, 0, 0); font-family: 'Arial'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; 
+ line-height: normal; orphans: 2; text-indent: 10px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: 14; text-align: justify">
+<br>
+&nbsp; &nbsp; SEJA BEM-VINDO! Este &eacute; o site
 ANTICORRETOR com informa&ccedil;&otilde;es em forma de artigos
 onde voc&ecirc; tamb&eacute;m pode coment&aacute;-los
 (blog). <br>
@@ -40,22 +57,8 @@ seu neg&oacute;cio com seguran&ccedil;a, bem como os <span
  style="text-decoration: underline;">&iacute;ndices de
 mercado</span> (<span style="font-style: italic;">veja
 ao lado</span>) para ter certeza do valor real do que
-est&aacute; comprando.</span></td>
-      <td style="width: 372px; height: 142px;">
-<div id="indices_recentes">
-  <ul>
-  <% for entry in Indice.all(:limit => 10, :order => "created_at desc") %>
-    <li><%= link_to h(entry.endereco) %></li>
-  <% end %>
-  </ul>
-</div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<ul>
-</ul>
-</div>
+est&aacute; comprando.</span><br>
+<br>
 
 <% @posts.each do |post| %>
 <h2><%= link_to post.titulo, post %></h2>

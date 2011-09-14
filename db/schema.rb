@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911215851) do
+ActiveRecord::Schema.define(:version => 20110913045246) do
 
   create_table "comentarios", :force => true do |t|
     t.string   "autor"

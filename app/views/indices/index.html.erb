@@ -1,0 +1,29 @@
+<h1>Indices por Numero de Qts. e Endereco</h1>
+
+<table>
+  <tr>
+    <th>Num. de qt</th>
+    <th>Endereco</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Valor medio </th>
+    <th>Valor medio/m2</th>
+    <th></th>
+  </tr>
+
+<% @indices.each do |index| %>
+  <tr>
+    <td><%= index.numqt %></td>
+    <td><%= index.endereco %></td>
+    <td><%= index.latitude %></td>
+    <td><%= index.longitude %></td>
+    <td>R$ <%= index.valmed %>.000,00</td>
+    <td>R$ <%= index.valm2med %>,00</td>
+    <td><%= link_to 'Abrir', index %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Voltar aos artigos', posts_path %>

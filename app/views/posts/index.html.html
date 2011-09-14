@@ -6,36 +6,25 @@
 
 </head>
 
-<body>
 
-<div id="imoveis_recentes">
-<table style="text-align: left; width: 873px; height: 316px;" border="1" cellpadding="2" cellspacing="2">
+<body style="color: rgb(0, 0, 0); background-color: rgb(204, 204, 255);" alink="#000099" link="#000099" vlink="#990099">
 
-  <tbody>
+<h1 style="width: 557px;"><font><i><font color="blue"><i>AntiCorretor.org</i></font></i></font></h1>
 
-    <tr>
+<div id="indices_recentes" style="border: 1px solid rgb(102, 102, 102); margin: 8px 0pt 16px 16px; padding: 4px; float: right; background-color: rgb(221, 221, 221);">
+<ul list-style="" none="" margin-left="" 8px="" padding-left:0="">
 
-      <td style="height: 54px; text-align: center;"><span class="Apple-style-span" style="color: rgb(51, 51, 51); font-family: verdana,arial,helvetica,sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 18px; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; background-color: rgb(255, 255, 255);">
-      <h1><font color="blue"><i>AntiCorretor.org</i></font></h1>
+&lt;% for entry in Indice.all(:limit =&gt; 10, :order =&gt; "created_at desc") %&gt;
+  <li>&lt;%= link_to h(entry.endereco)%&gt;</li>
 
-      </span></td>
+&lt;% end %&gt;
+</ul>
 
-      <td style="height: 54px; text-align: center;">
-      <h3>Indices recentes coletados:</h3>
+</div>
 
-      </td>
+<span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><img style="width: 105px; height: 105px; float: left;" alt="" src="/images/casa3.jpg"></span><br>
 
-    </tr>
-
-    <tr>
-
-      <td style="width: 481px; height: 142px;">
-      <div style="text-align: center;"><span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;">&nbsp;
-&nbsp; &nbsp;<img style="width: 105px; height: 105px;" alt="" src="../../../public/images/casa.jpg"></span><br>
-
-      <span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"></span></div>
-
-      <span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;">&nbsp;
+<span class="Apple-style-span" style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;">&nbsp;
 &nbsp; &nbsp; SEJA BEM-VINDO! Este &eacute; o site
 ANTICORRETOR com informa&ccedil;&otilde;es em forma de artigos
 onde voc&ecirc; tamb&eacute;m pode coment&aacute;-los
@@ -57,30 +46,20 @@ de tudo o que voc&ecirc; precisa <span style="font-style: italic;">SABER</span> 
 seu neg&oacute;cio com seguran&ccedil;a, bem como os <span style="text-decoration: underline;">&iacute;ndices de
 mercado</span> (<span style="font-style: italic;">veja
 ao lado</span>) para ter certeza do valor real do que
-est&aacute; comprando.</span></td>
+est&aacute; comprando.</span><br>
 
-      <td style="width: 372px; height: 142px;"> &lt;%
-for entry in Indice.all(:limit =&gt; 10, :order =&gt;
-"created_at desc") %&gt;
-      <ul>
+<br>
 
-        <li>&lt;%= link_to h(entry.endereco) %&gt;</li>
+<br>
 
-&lt;% end %&gt;
-      </ul>
-
-      </td>
-
-    </tr>
-
-  </tbody>
-</table>
-
+#recent_episodes { }
+#recent_episodes h3 { margin: 0; font-size: 1em; }
+#recent_episodes ul { }
+#recent_episodes a { font-size: 0.9em; }
 <ul>
 
 </ul>
 
-</div>
 
 &lt;% @posts.each do |post| %&gt;
 <h2>&lt;%= link_to post.titulo, post %&gt;</h2>
@@ -93,6 +72,12 @@ for entry in Indice.all(:limit =&gt; 10, :order =&gt;
 certeza?', :method =&gt; :delete %&gt;
 <hr>&lt;% end %&gt; <br>
 
-&lt;%= link_to 'Novo artigo', new_post_path %&gt;
+&lt;%= link_to 'Novo artigo', new_post_path %&gt;<br>
+
+<br>
+
+<div style="text-align: right;"><small style="font-style: italic;">Powered by&nbsp; <img style="width: 37px; height: 46px;" alt="" src="../../../public/images/rails.png"> Copyright by
+BonoRocks 2011 v1.0</small></div>
+
 </body>
 </html>
