@@ -19,7 +19,7 @@ task :geraIndices => :environment do
                       902, 903, 904, 905, 906, 907, 908, 909, 910, 911, 912, 913, 914, 915, 916,]                      
   num_sw = ["01", "02", "03", "04", "05", "06", "07", "08", 101, 102, 103, 104, 105, 300, 301, 302, 303, 304, 305, 306, 504]
 
-=begin  
+
   for numqt in (1..5)
     ####################
     #Varre apartamentos do plano
@@ -70,8 +70,7 @@ task :geraIndices => :environment do
     end
   end  
 end
-=end
-end
+
 #apague esse tb !
 
 
