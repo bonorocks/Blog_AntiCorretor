@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= yield(:head) %>
+  </head>
+  <body style="background: #EEEEEE;">
+    <div id="container">
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%- end -%>
+            
+      <%= yield %>
+    </div>
+<div style="text-align: center;"><small
+ style="font-style: italic;">Powered by&nbsp; <img
+ style="width: 37px; height: 46px;" alt=""
+ src="/images/rails.png">&nbsp; Copyright BonoRocks 2011 v1.0</small></div>
+
+  </body>
+</html>

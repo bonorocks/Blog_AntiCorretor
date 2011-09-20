@@ -60,8 +60,11 @@ GEM
     brstring (3.0.4)
       activesupport (>= 3.0.0)
     builder (2.1.2)
+    crack (0.3.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    gmaps4rails (1.1.5)
+      crack
     i18n (0.5.0)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -104,6 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   brazilian-rails
+  gmaps4rails
   nokogiri
   rails (= 3.0.9)
   sqlite3

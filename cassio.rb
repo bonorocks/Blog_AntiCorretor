@@ -1,4 +1,6 @@
-str = "0770000.019625.0avg(VALM2)9625.0avg(VALOR)770000.0"
-res= str.slice(str.index("M2")+3..str.index("VALOR"))
-puts res.slice(0..res.index(".")-1)
-puts str.slice(1..str.index(".")-1)
+@indices = Indice.all
+    @indices.each do |item|
+    #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+      #self.address = "#{item.endereco}" 
+      puts "#{endereco}" 
+    end

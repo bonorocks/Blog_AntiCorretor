@@ -2,6 +2,9 @@ class IndicesController < ApplicationController
  
   # Requisicao de autenticacao
    before_filter :authenticate, :except => [:index, :show]
+   
+   $json = Indice.all.to_gmaps4rails
+   #@json = Indice.all.to_gmaps4rails
  
  # GET /indices
   # GET /indices.xml

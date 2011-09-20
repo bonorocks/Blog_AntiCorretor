@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
+<%= gmaps({
+       "map_options" => {"auto_zoom" => false, "zoom" => 14, "center_on_user" => true },
+       "markers"     => {"data" => $json }
+      })
+%>
 
 <p>
   <b>Endereco:</b>

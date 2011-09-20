@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   # Requisicao de autenticacao
-   before_filter :authenticate, :except => [:index, :show]
+  # before_filter :authenticate, :except => [:index, :show]
    
   # GET /posts
   # GET /posts.xml

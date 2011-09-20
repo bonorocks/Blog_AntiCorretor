@@ -1,7 +1,7 @@
 class ComentariosController < ApplicationController
   
    # Requisicao de autenticacao
-   before_filter :authenticate, :except => [:create]
+   #before_filter :authenticate, :except => [:create]
    
    def create
     @post = Post.find(params[:post_id])
