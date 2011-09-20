@@ -1,6 +1,6 @@
  desc "Checa os indcies"
   task :checaIndices => :environment do
     connection = ActiveRecord::Base.connection
-    res = connection.execute(" select endereco from indices where latitude <> 0.0")
+    res = connection.execute("SELECT endereco FROM Indices WHERE latitude <> 0.0")
     puts res
   end
