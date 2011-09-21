@@ -12,6 +12,6 @@ end
    end
    
     def gmaps4rails_infowindow
-     "<B>#{endereco}</B>"
+     "<B>#{endereco}</B><p>Apt. de #{numqt} quarto(s)</p><p>Valor medio: R$ #{valmed}.000,00 </p><p>Valor/m2: R$ #{valm2med},00</p>"
     end
 end
