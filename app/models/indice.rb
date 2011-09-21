@@ -1,7 +1,7 @@
 class Indice < ActiveRecord::Base
   acts_as_gmappable :lat => 'latitude', :lng => 'longitude', :check_process => :prevent_geocoding, 
                   :address => "endereco", :normalized_address => "endereco",
-                  :msg => "Desculpe, o endereco está ambiguo..."
+                  :msg => "Desculpe, o endereco esta ambiguo..."
 
 def prevent_geocoding
   address.blank? || (!lat.blank? && !lng.blank?) 
