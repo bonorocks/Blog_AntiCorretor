@@ -4,7 +4,7 @@
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
-    <%= yield :head %>
+    <%= yield(:head) %>
   </head>
   <body style="background: #EEEEEE;">
     <div id="container">
@@ -13,7 +13,6 @@
       <%- end -%>
             
       <%= yield %>
-      <%= yield :scripts %>
     </div>
 <div style="text-align: center;"><small
  style="font-style: italic;">Powered by&nbsp; <img
